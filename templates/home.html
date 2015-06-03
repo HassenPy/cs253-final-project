@@ -1,0 +1,28 @@
+<html>
+	<head>		
+		<title>editmos</title>
+	</head>
+
+
+  <body style="position:relative; width:900px;margin:0px auto;">
+  <h1 style="text-align:center"><a href = "/">Wiki Home</a></h1>
+
+  <div>
+  <a href="/newpost" style = "color:orange;float:right; margin-top:-80px;">Create an article</a><br> 
+  <a href="/{{state}}" style = "color:orange;float:right;margin-right:-20%; margin-top:1%;">{{state}}</a>
+  <a href="/{{user}}" style = "color:orange;float:right;margin-right:-13%; margin-top:1%;">{{user}}</a><br><br>
+  </div>
+<br>
+<br>
+  <div>
+  <div stye="border: 5px solid red;">
+   <a href="/_edit/{{red}}" style = "color:orange;float:right;margin-right:-12%; margin-top:1%;">Edit</a>
+   <a href="{{version}}" style = "color:orange;float:right;margin-right:-20%; margin-top:1%;">Versions</a><br>
+  </div>
+
+	{{ content }}
+
+</div>
+</body>
+
+</html>

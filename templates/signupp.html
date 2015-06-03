@@ -1,0 +1,67 @@
+<html>
+<head><title></title></head>
+
+<body style="position:relative; width:900px;margin:0px auto;">
+<h1 style="text-align:center"><a href="/">Wiki Home</a></h1>
+
+
+<div class="mestili" style="margin-top:15%; margin-left:36%;">
+<h2 style="margin-left:16%;"> Signup</h2>
+<form method="post">
+
+      <table>
+        <tbody><tr>
+          <td class="label">
+            Username
+          </td>
+          <td>
+            <input name="username" value="{{u}}" type="text">
+          </td>
+          <td class="">{{error}}
+            
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">
+            Password
+          </td>
+          <td>
+            <input name="password" value="{{p}}" type="password">
+          </td>
+          <td class="">{{errorA}}
+            
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">
+            Verify Password
+          </td>
+          <td>
+            <input name="verify" value="{{ps}}" type="password">
+          </td>
+          <td class="">{{errorB}}
+            
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">
+            Email (optional)
+          </td>
+          <td>
+            <input name="email" value="{{em}}" type="text">
+          </td>
+          <td class="">{{errorC}}
+            
+          </td>
+        </tr>
+      </tbody></table>
+
+      <input type="submit">
+    
+</form>
+</div>
+</body>
+</html>

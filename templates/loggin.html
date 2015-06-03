@@ -1,0 +1,41 @@
+<html>
+<head>
+	<title>Login</title>
+
+</head>
+
+
+<body style="position:relative; width:900px;margin:0px auto;">
+<h1 style="text-align:center"><a href="/">Wiki Home</a></h1>
+<div class="mestili" style="margin-top:10%; margin-left:36%;">
+<form method="post">
+<table>
+        <tbody><tr>
+          <td class="label">
+            Username
+          </td>
+          <td>
+            <input name="username" value="{{u}}" type="text">
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            Password
+          </td>
+          <td>
+            <input name="password" type="password">
+          </td>
+        </tr>
+        <tr>
+        <td></td>
+        <td style="font-size:15px;">Don't have an account? <a href="signup" style="font-size:10px;">Signup</a></td>
+        </tr>
+     	</tbody>
+</table>
+<input type="submit" value="Login">
+</form>
+<h6 style="color:red;">{{error}}</h4>
+</div>
+</body>
+
+</html>

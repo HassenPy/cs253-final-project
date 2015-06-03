@@ -1,0 +1,26 @@
+<html>
+	<head>		
+		<title>editmos</title>
+	</head>
+
+  <body style="position:relative; width:900px;margin:0px auto;">
+  <h1 style="text-align:center"><a href = "/">Wiki Home</a></h1>
+
+  <div>
+  <a href="/newpost" style = "color:orange;float:right; margin-top:-80px;">Create an article</a><br> 
+  <a href="/{{state}}" style = "color:orange;float:right;margin-right:-20%; margin-top:1%;">{{state}}</a>
+  <a href="/{{user}}" style = "color:orange;float:right;margin-right:-13%; margin-top:1%;">{{user}}</a><br><br>
+  </div>
+<br>
+<br>
+  <form>
+  <table style='border-style:solid; border-color:#ff0000;'>
+  {% for x in jaime: %}
+  <tr><td>{{x.tim}}</td><td><a>{{x.content}}</a></td><td><td><a href="../{{path}}?v={{x.key().id()}}">view</a></td><td><a href="../_edit/{{path}}?v={{x.key().id()}}">edit</a></td></tr>
+  {% endfor %}
+  </table>
+  </form>
+</div>
+</body>
+
+</html>
