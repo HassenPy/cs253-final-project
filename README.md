@@ -4,7 +4,7 @@ Final project for [cs253 web development course][1] from Udacity
 1 year old project, probably the project i enjoyed the most.
 
 Technology stack:  
-* Raw Python app  
+* python webapp2 lightweight framework.
 * Data storage and hosting: Google App Engine  
 * Caching: Memcached  
 
