@@ -13,6 +13,5 @@ Usage:
  2. type in any path in the address bar
  3. fill in the form
 
-##### This project is for archiving purposes and in no way reflects my current work.
 
 [1]: https://www.udacity.com/course/web-development--cs253
