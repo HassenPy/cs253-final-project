@@ -24,18 +24,18 @@ def run_once(f):
     wrapper.has_run = False
     return wrapper
 
-#sc is the secret hash key. encryption level 999 :P
+#sc is the secret hash key. hash level 999 :P
 
 sc="1i239dbfu483sfys9ge9sssf9"
 
-#Cryption related functions
+#hashing related functions
 
-def crypto(s):
+def hash_yo(s):
 	return "%s|%s" %(s,hmac.new(sc, s).hexdigest())
-def passcrypt(s):
+def passhash(s):
 	return "%s" % (hmac.new(sc,s).hexdigest())
-def crypted(s,to_check):
-	if s == passcrypt(to_check):
+def hashed_yo(s,to_check):
+	if s == passhash(to_check):
 		return True
 def make_salt(length=5):
 	return ''.join(random.choice(letters) for x in xrange(length))
@@ -53,7 +53,7 @@ def check_password(name, password, h):
 	return h == make_pw_has(name,password, salt)
 def check_secure_cookie(cook):
 	p=str(cook).split("|")[0]
-	if crypto(p)== cook:
+	if hash_yo(p)== cook:
 		return True
 	return False
 def valid_username(username):
@@ -276,7 +276,7 @@ class registrar(Handler):
 		j=self.request.cookies.get("user_id")
 		try:
 			if j.split("|")[0] != j.split("|")[1]:
-				if crypto(j.split("|")[0]) != j.split("|")[1]:
+				if hash_yo(j.split("|")[0]) != j.split("|")[1]:
 					self.redirect('/')
 				else:
 					self.render("signupp.html" , u="", error="",p="", errorA="",ps="", errorB="",errorC="")
@@ -325,16 +325,16 @@ class registrar(Handler):
 				if msg == "Email already in use!!":
 					self.render("signupp.html", u=user, error=msg, p="", errorA=er1, ps="", errorB=er2, em=email, errorC=er3)
 				else:
-					putting= User(userid=user, password=passcrypt(pas), email=email)
+					putting= User(userid=user, password=passhash(pas), email=email)
 					putting.put()
 					time.sleep(0.5)
-					self.response.headers.add_header('Set-Cookie', 'user_id=%s; Path=/' % str(crypto(user)))
+					self.response.headers.add_header('Set-Cookie', 'user_id=%s; Path=/' % str(hash_yo(user)))
 				self.redirect("/welcome")
 			except:
-				putting= User(userid=user, password=passcrypt(pas), email=email)
+				putting= User(userid=user, password=passhash(pas), email=email)
 				putting.put()
 				time.sleep(0.5)
-				self.response.headers.add_header('Set-Cookie', 'user_id=%s; Path=/' % str(crypto(user)))
+				self.response.headers.add_header('Set-Cookie', 'user_id=%s; Path=/' % str(hash_yo(user)))
 				self.redirect("/welcome")
 
 class Login(Handler):
@@ -342,7 +342,7 @@ class Login(Handler):
 		j=self.request.cookies.get("user_id")
 		try:
 			if j.split("|")[0] != j.split("|")[1]:
-				if crypto(j.split("|")[0]) != j.split("|")[1]:
+				if hash_yo(j.split("|")[0]) != j.split("|")[1]:
 					self.redirect('/')
 				else:
 					self.render("loggin.html", u="", error="")
@@ -356,10 +356,10 @@ class Login(Handler):
 		if valid_username(username) and valid_password(password):
 			checking_user= db.GqlQuery("SELECT * FROM User WHERE userid=:1 ",username)
 			for j in checking_user:
-				if j.userid==username and crypted(j.password,password):
+				if j.userid==username and hashed(j.password,password):
 					checking= True
 			if checking:
-				self.response.headers.add_header('Set-Cookie', 'user_id=%s; Path=/' % str(crypto(username)))
+				self.response.headers.add_header('Set-Cookie', 'user_id=%s; Path=/' % str(hash_yo(username)))
 				self.redirect("/welcome")
 			else:
 				self.render("loggin.html", u="", error="Invalid Login!!")
